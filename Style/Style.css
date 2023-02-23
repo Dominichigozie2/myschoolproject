@@ -50,11 +50,19 @@ body{
     gap: 3rem;
 }
 .second-nav{
-    width: 100%;
+ width: 100%;
  display: flex;
  justify-content: space-between;
  align-items: flex-end;
  position: absolute;
+ background: #ffffff35;
+ z-index: 100;
+}
+.add{
+    background: var(--clr);
+    position: fixed;
+    top: 0;
+    z-index: 100;
 }
 .logo{
     width: fit-content;
@@ -80,9 +88,99 @@ body{
 .secondlist li a{
     color: var(--drk);
 }
-
+.submit-btn{
+    padding: 1rem;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 800;
+    border-radius: 2ch;
+    align-items: center;
+    color: var(--bg);
+    background: var(--dsg);
+}
+.bar,
+#bars{
+    font-size: 2.5rem;
+    font-weight: 900;
+    display: none;
+    align-self: center;
+    color: var(--bg);
+}
+#search{
+    font-size: 2.5rem;
+    font-weight: 900;
+    display: none;
+    align-self: center;
+    color: var(--bg);
+}
+header{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;    
+    background: var(--blue-100);
+    z-index: 10;
+}
+.active{
+    top: 10%;
+    transition: all 500ms ease-in-out;
+}
+header > ul{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+}
+header ul > li{
+    list-style: none;
+    font-size: 1.5rem;
+    font-weight: 900;
+    display: flex;
+    /* background: yellow; */
+}
+header ul li > a{
+    text-decoration: none;
+    color: var(--bg);
+    width: 100%;
+    padding: 1rem;
+    /* background: green; */
+}
 
 /* the home page starts */
+
+.search{
+    position: absolute;
+    left: 5rem;
+    display: flex;
+    gap: 3rem;
+    flex-direction: column;
+    font-size: 2rem;
+    top: 50%;
+}
+.search-icons{
+    padding: 1rem;
+    background: var(--blue-100);
+    box-shadow: 1px 4px 10px #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--bg);
+    transform: translateX(-.7rem);
+}
+.search-second-icons{
+  padding: 1rem;
+  background: var(--blue-100);
+  box-shadow: 1px 4px 10px #555;
+  color: var(--bg);
+  transform: translateX(4.5rem);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+}
+
 .home{
     display: flex;
     justify-content: flex-end;
@@ -124,11 +222,12 @@ gap: 1rem;
 }
 
 .home-image-container{
+    position: relative;
     padding-left: 7rem;
     padding-bottom: 4rem;
     clip-path: var(--clip-path);
     z-index: -1;
-   width: 60%;
+    width: 60%;
     background: var(--home-bg-100);
 }
 .home-image{
@@ -204,6 +303,7 @@ gap: 1rem;
     width: 100%;
     height: 100%;
     background: url(../image/about.png);
+    background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -318,8 +418,17 @@ gap: 1rem;
 
 /* the ehy choose us section starts*/
 .choose{
+    background-image: url(../image/colonial-style-house-night-scene_1150-17925.webp);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center ;
+    position: relative;
+}
+.bg-cloth{
     padding: 10rem 1rem;    
-    background: var(--blue-100);
+    background: #000000e5;
+    height: 100%;
 }
 .choose-container{
     width: 80%;
@@ -328,7 +437,6 @@ gap: 1rem;
     flex-direction: column;
     gap: 2rem;
 }
-.property-container>h5,
 .choose-container>h5{
     text-align: center;
     display: flex;
@@ -338,15 +446,15 @@ gap: 1rem;
     background: var(--dsg100);
     font-size: 1.4rem;
     text-transform: uppercase;
-    color: var(--bg);
+    color: var(--blue-100);
     border-radius: 4ch;
     justify-self: center;
 }
-.property-container>h1,
+
 .choose-container>h1{
     font-size: 5rem;
     text-align: center;
-    color: var(--bg);
+    color: var(--blue-100);
     text-transform: capitalize;
 }
 
@@ -394,23 +502,44 @@ gap: 1rem;
     padding:10rem 2rem;
 }
 
+.property-container>h5{
+    text-align: center;
+    display: flex;
+    align-self: center;
+    width: max-content;
+    padding: 1rem 2rem;
+    background: var(--dsg100);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: var(--bg);
+    border-radius: 4ch;
+    justify-self: center;
+}
+
+.property-container>h1
+{
+    color: var(--bg);
+    font-size: 5rem;
+    text-align: center;
+    text-transform: capitalize;
+}
 .property-container{
    width: 80%;
    margin-inline: auto;
    display: flex;
    gap: 2rem;
    flex-direction: column;
+   border-radius: 2ch;
 }
 .property-content{
-    display: flex;
+    width: 100%;
+    padding-bottom: 3rem;
 }
 .property-box{
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    width: min(30rem, 20%);
+    /* gap: 1rem; */
     overflow: hidden;
-    height: 100%;
     box-shadow: 3px 5px 20px #0005;
     border-radius: 5px;
 }
@@ -520,19 +649,17 @@ gap: 1rem;
     border-radius: 1ch;
 }
 
+
 swiper-container {
     width: 100%;
     height: 100%;
-    padding: 5rem 0px;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
   }
 
   swiper-slide {
+    background: #fff;
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 10rem;
+    height: fit-content;
   }
 /* the  property  section ends */
 
@@ -548,11 +675,13 @@ swiper-container {
     flex-flow: column;
     gap: 2rem;
     align-items: center;
+    padding-bottom: 4rem;
 }
 .blog-swipper{
     margin-top: 10rem;
     display: flex;
     gap: 3rem;
+    padding-bottom: 4rem;
 }
 .blog-box{
     background: var(--blue-100);
@@ -686,4 +815,359 @@ swiper-container {
 }
 /*the look out section ends */
 
+/* footer section starts here*/
+.footer{
+    padding: 1rem;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+}
+.upper-section{
+    width: 80%;
+    transform: translateY(-50%);
+    margin-inline: auto;
+    background: var(--dsg);
+    padding: 3rem 4rem 3rem 4rem;
+    text-align: center;
+    border-radius: 6ch;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
 
+.upper-section h1{
+    font-size: 5rem;
+    text-transform: capitalize;
+    color: var(--bg);
+    font-weight: 900;
+}
+.footer img{
+    width: 30px;
+}
+.suscribe{
+    background: var(--clr);
+    width: max-content;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    border-radius: 2ch;
+    margin-inline: auto;
+    overflow: hidden;
+}
+.suscribe .input{
+  padding: 1rem 4rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border: none;
+  width: 100%;
+  outline: none;
+  background: transparent;
+}
+.suscribe .input::placeholder{
+    color: #bdbdbd;
+}
+.suscribe-btn{
+    background: var(--bg);
+    padding: 2rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--dsg);
+    outline: none;
+    border: none;
+}
+
+.lower-section{
+    padding: 1rem;
+}
+.lower-section-container{
+    width: 80%;
+    margin-inline: auto;
+    color: var(--clr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.footer-first-col{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1.4rem;
+}
+.footer-col{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1.4rem;
+}
+
+.footer-col >h4{
+    font-size: 2rem;
+}
+.footer-col > .footer-menu li{
+    padding:0px 1rem;
+}
+.footer-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+/* footer section ends here*/
+
+
+
+/* about page */
+.main-about{
+    margin-top: 6rem;
+}
+.about-main-image{
+    width: 100%;
+    height: 45vh;
+    background-image: url(../image/about.png);
+    /* background-size: cover; */
+    /* background-repeat: no-repeat; */
+    margin-bottom: 3rem;
+}
+
+.menu{
+    display: flex;
+    padding:1rem 0;
+    margin-inline: auto;
+    width: 80%;
+    display: flex;
+    text-transform: capitalize;
+}
+
+.menu h1{
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--bg);
+    margin-top: 20rem;
+}
+
+.about-section-content{
+    width: 80%;
+    padding: 1rem 0;
+    margin-inline: auto;
+}
+
+.about-section-content h1{
+    font-size: 55px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--bg);
+}
+
+.about-section-content p{
+    margin: 3rem 0 5rem 0;
+    font-size: 2rem;
+    line-height: 1.5;
+    text-align: justify;
+}
+/* about page */
+
+
+/* the login page*/
+.login{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    min-height: 90vh;
+}
+.login-left{
+ background: url(../image/modern-house-exterior-with-empty-background-real-estate-concept_258219-332.webp);
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;
+}
+
+.login-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login-left-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    height: 100%;
+    background: #101344be;
+    align-items: center;
+}
+.login-left-content > h5{
+    text-transform: uppercase;
+    padding: 1rem 4rem;
+    border-radius: 4ch;
+    font-size: 1.2rem;
+    background: var(--dsg100);
+    color: var(--blue-100);
+    z-index: 1;
+}
+.login-left-content > h1{
+    color: var(--blue-100);
+    z-index: 1;
+    text-transform: capitalize;
+    font-size: 5rem;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem 1rem;
+    margin: 4rem auto;
+    width: 70%;
+}
+.input-box{
+    /* width: 100%; */
+    background: var(--bg);
+    padding: 1rem;
+    border-radius: 2ch;
+}
+.input-box input{
+    padding: 1rem 0;
+    background: transparent;
+    font-size: 1.2rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 4ch;
+    color: var(--home-bg-100);
+    font-weight: 600;
+}
+
+.login-btn{
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    width: max-content;
+    font-weight: 800;
+    background: var(--home-bg-100);
+    border: none;
+    border-radius: 1ch;
+}
+
+.alt{
+    position: relative;
+    width: 65%;
+    padding: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 900;
+    
+}
+.alt::before{
+    left: 0;
+}
+.alt::after{
+ right: 0;
+}
+
+.alt::after,
+.alt::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 2px;
+    background: rgb(223, 222, 222);
+    z-index: 1;
+}
+.reg-link{
+    font-size: 1.2rem;
+    color: rgb(115, 113, 113);
+}
+/* the login page*/
+
+
+
+@media(max-width: 700px){
+    #search{
+        display: flex;
+        /* position: absolute; */
+        width: 100%;
+        /* background: red; */
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding: 0px 2rem;
+    }
+    #bars{
+        display: flex;
+    }
+
+    .secondlist,
+    .submit-btn,
+    .about-image,
+    .search,
+    .firstnav{
+        display: none;
+    }
+    .service-container,
+    .second-container{
+        width: 100%;
+        padding: 1.5rem;
+    } 
+    .home-container{
+        width: 100%;
+        background: rgba(250, 250, 250, 0.544);
+    }
+    .home-content{
+        position: absolute;
+        padding: 1em;
+    }
+    .home-image-container,
+    .home-image{
+        width: 100%;
+        clip-path: none;
+        padding: 0;
+    }
+    .about-container{
+        width: 90%;
+        min-height: fit-content;
+    }
+    .display{
+      grid-template-columns: repeat(1,1fr);
+      transform: translateY(0%);
+      padding:4rem 1em;
+      /* width: 85%; */
+    }
+    .display-containers{
+        width: 100%;
+    }
+    .choose-content,
+    .service-content{
+        grid-template-columns: repeat(1,1fr);
+        width: 100%;
+    }
+    .about-content{
+        padding: 5rem 1.5rem;
+      }
+      .choose-container{
+        width: 95%;
+      }
+      .look-container{
+        width: 100%;
+      }
+      .look-content > h1{
+        line-height: 50px;
+      }
+      .second,
+      .first{
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .footer{
+        padding: 0;
+      }
+      .suscribe{
+        flex-direction: column;
+        width: 100%;
+      }
+      .suscribe .input{
+        text-align: center;
+      }
+      .suscribe-btn{
+        width: 100%;
+      }
+}
